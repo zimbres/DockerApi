@@ -19,7 +19,7 @@ namespace DockerApi.Controllers
         public string Get()
         {
             _logger.LogInformation(DateTime.Now.ToString());
-            return Environment.MachineName;
+            return $"{Environment.MachineName} - Version 1.0";
         }
     }
 }
