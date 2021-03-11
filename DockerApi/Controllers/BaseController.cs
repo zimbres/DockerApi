@@ -18,6 +18,7 @@ namespace DockerApi.Controllers
         [HttpGet]
         public string Get()
         {
+            _logger.LogInformation(DateTime.Now.ToString());
             return Environment.MachineName;
         }
     }
