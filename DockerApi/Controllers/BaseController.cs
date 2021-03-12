@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace DockerApi.Controllers
 {
@@ -17,18 +18,21 @@ namespace DockerApi.Controllers
         }
 
         [HttpGet]
-        public BaseModel Get()
+        public IEnumerable<BaseModel> Get()
         {
             _logger.LogInformation(DateTime.Now.ToString());
 
-            var model = new BaseModel
+            var list = new List<BaseModel>();
+
+            var baseModel = new BaseModel
             {
                 Hostname = Environment.MachineName,
                 DateTime = DateTime.Now,
                 Version = 1.1
             };
+            list.Add(baseModel);
 
-            return model;
+            return list;
         }
     }
 }
