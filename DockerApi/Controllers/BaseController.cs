@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DockerApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -16,10 +17,18 @@ namespace DockerApi.Controllers
         }
 
         [HttpGet]
-        public string Get()
+        public BaseModel Get()
         {
             _logger.LogInformation(DateTime.Now.ToString());
-            return $"{Environment.MachineName} - Version 1.0";
+
+            var model = new BaseModel
+            {
+                Hostname = Environment.MachineName,
+                DateTime = DateTime.Now,
+                Version = 1.1
+            };
+
+            return model;
         }
     }
 }
